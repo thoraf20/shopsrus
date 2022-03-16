@@ -7,10 +7,12 @@ const app = express();
 import cors from "cors";
 
 import connectDB from "./src/db/connect.js";
+import indexRouter from './src/routes/index.js'
 
 app.use(express.json());
 
 app.use(cors());
+app.use(indexRouter)
 
 const port = process.env.PORT || 5000;
 
