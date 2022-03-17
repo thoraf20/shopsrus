@@ -1,34 +1,38 @@
 import httpStatus from "http-status-codes";
 import moment from 'moment'
-import Customer from "../models/Customer.js";
+import User from "../models/User.js";
 import Invoice from "../models/Invoice.js";
 
 export const getTotalnvoiceAmount = async (req, res) => {
-  const body = { bill: 4500, user_id: "6232ce7d704aabdfa418bbb1", groceries: 250 };
+  const body = {
+    bill: 4500,
+    user_id: "6233984f3ea1ef427ed40293",
+    groceries: 250,
+  };
     // req.body
   let amount = 0;
 
   try {
-    const customer = await Customer.findById({ _id: body.user_id });
+    const user = await User.findById({ _id: body.user_id });
     
-    if (!customer) {
+    if (!user) {
       return res
-      .status(httpStatus.NO_CONTENT)
-      .json({ status: fail, data: "no user in the db yet" });
+        .status(httpStatus.NO_CONTENT)
+        .json({ status: fail, data: "no user in the db yet" });
     }
     
-    const timeDiffInMin = moment().diff(customer.createdAt, "years");
+    const timeDiffInMin = moment().diff(user.createdAt, "years");
     
-    if (customer.user_type === "affiliate") {
-      amount += (body.bill - (body.bill * 0.1));
+    if (user.user_type === "affiliate") {
+      amount += body.bill - body.bill * 0.1;
     }
 
-    if (customer.user_type === 'employee') {
-      amount += body.bill - (body.bill * 0.3)
+    if (user.user_type === "employee") {
+      amount += body.bill - body.bill * 0.3;
     }
 
-    if (customer.user_type === 'customer' && timeDiffInMin >= 2) {
-      amount += body.bill - (body.bill * 0.05)
+    if (user.user_type === "customer" && timeDiffInMin >= 2) {
+      amount += body.bill - body.bill * 0.05;
     }
 
     let totalAmount = amount

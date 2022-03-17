@@ -4,8 +4,9 @@
   "description": "an API to calculate discounts, generate total costs and generate involce for customers",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "test": "jest",
+    "test:watch": "npm run test -- --watch"
   },
   "keywords": [
     "API"
@@ -13,6 +14,9 @@
   "author": "Toheeb Rauf",
   "license": "ISC",
   "dependencies": {
+    "@babel/core": "^7.17.7",
+    "@babel/preset-env": "^7.16.11",
+    "babel-jest": "^27.5.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
@@ -23,6 +27,8 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^6.0.0",
+    "jest": "^27.5.1",
+    "node-mocks-http": "^1.11.0",
     "nodemon": "^2.0.15"
   },
   "type": "module"

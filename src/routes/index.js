@@ -1,10 +1,10 @@
 import { Router } from 'express'
 import {
-  createCustomer,
-  getallCustomerbyId,
-  getallCustomers,
-  getCustomerByName
-} from '../controllers/customers.js';
+  createUser,
+  getAllUserById,
+  getAllUsers,
+  getUserByName,
+} from "../controllers/user.js";
 import {
   createDiscount,
   getallDiscounts,
@@ -14,16 +14,11 @@ import { getTotalnvoiceAmount } from '../controllers/invoice.js';
 
 const router = Router()
 
-router
-  .route("/user")
-  .post(createCustomer)
-  .get(getallCustomers)
+router.route("/user").post(createUser).get(getAllUsers);
   
+router.route("/user/name").get(getUserByName);
   
-router.route("/user/name").get(getCustomerByName);
-  
-router.route("/user/:id").get(getallCustomerbyId);
-
+router.route("/user/:id").get(getAllUserById);
 
 router.route("/discount").post(createDiscount).get(getallDiscounts);
 router.route("/discount/type").get(getDiscountByType)
