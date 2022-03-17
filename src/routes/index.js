@@ -1,10 +1,21 @@
 import { Router } from 'express'
-import { createCustomer, getallCustomerbyId, getallCustomers } from '../controllers/customers.js';
+import { createCustomer, getallCustomerbyId, getallCustomers, getCustomerByName } from '../controllers/customers.js';
+import { createDiscount, getallDiscounts, getDiscountByType } from '../controllers/discounts.js';
 
 const router = Router()
 
-router.route("/user").post(createCustomer).get(getallCustomers);
-router.route("/user/:id").get(getallCustomerbyId);
+router
+  .route("/user")
+  .post(createCustomer)
+  .get(getallCustomers)
+  
+  router.route("/user/:id").get(getallCustomerbyId);
+  router.route("/user/name/:name").get(getCustomerByName);
+
+
+router.route("/discount").post(createDiscount).get(getallDiscounts);
+router.route("/discount/type/:type").get(getDiscountByType)
+
 
 
 export default router
