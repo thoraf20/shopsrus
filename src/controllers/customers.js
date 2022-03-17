@@ -36,7 +36,9 @@ export const getallCustomerbyId = async (req, res) => {
 }
 
 export const getCustomerByName = async (req, res) => {
-  const { name } = req.params
+  console.log(req)
+  const { name } = req.query
+
 
   try {
     const customer = await Customer.findOne({ name })
@@ -55,6 +57,7 @@ export const createCustomer = async (req, res) => {
   const requestSchema = Joi.object({
     name: Joi.string().required(),
     user_type: Joi.string().required(),
+    dateRegistered: Joi.date().required()
   });
 
   const { value, error } = requestSchema.validate(req.body);

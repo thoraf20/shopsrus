@@ -14,9 +14,9 @@ const CustomerSchema = new mongoose.Schema(
       trim: true,
     },
 
-    // dateRegistered: {
-    //   type: Date,
-    // },
+    dateRegistered: {
+      type: Date,
+    },
   },
   { timestamps: true }
 );

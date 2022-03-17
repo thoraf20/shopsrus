@@ -9,13 +9,13 @@ router
   .post(createCustomer)
   .get(getallCustomers)
   
-  router.route("/user/:id").get(getallCustomerbyId);
-  router.route("/user/name/:name").get(getCustomerByName);
+  
+router.route("/user/name").get(getCustomerByName);
+  
+router.route("/user/:id").get(getallCustomerbyId);
 
 
 router.route("/discount").post(createDiscount).get(getallDiscounts);
-router.route("/discount/type/:type").get(getDiscountByType)
-
-
+router.route("/discount/type").get(getDiscountByType)
 
 export default router
