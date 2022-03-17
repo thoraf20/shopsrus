@@ -19,4 +19,4 @@ const InvoiceSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export default mongoose.model("Discount", InvoiceSchema);
+export default mongoose.model("Invoice", InvoiceSchema);

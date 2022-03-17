@@ -36,9 +36,7 @@ export const getallCustomerbyId = async (req, res) => {
 }
 
 export const getCustomerByName = async (req, res) => {
-  console.log(req)
   const { name } = req.query
-
 
   try {
     const customer = await Customer.findOne({ name })
