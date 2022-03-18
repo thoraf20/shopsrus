@@ -1,7 +1,5 @@
 import { createUser } from "../src/controllers/user.js";
 import User from "../src/models/User.js";
-import { createDiscount } from "../src/controllers/discounts.js";
-import Discount from "../src/models/Discount.js";
 import httpMocks from "node-mocks-http";
 
 
